@@ -4,16 +4,22 @@ const valueOptions = ["rock", "paper", "scissors"];
 // idea: add a function that will alow the user to input symbols and inform
 
 const getPlayerChoice = () => {
+  while (true) {
   const userInput = prompt("Let´s Play! Rock, paper, or scissors?");
-  const userChoice = userInput.trim().toLowerCase();
+  const userChoice = userInput?.trim().toLowerCase();
   // add loop
-
-  if (!valueOptions.includes(userChoice)) {
-    alert("invalid input. Please type rock, paper, or scissors.");
+  console.log(userInput);
+  if (valueOptions.includes(userChoice)) {
+     return userChoice;
     //return (resume the game)
-  } else {
-    return userChoice;
+   
+  }else if (userInput === null) {
+    alert("Thank you! Byeee");
+    return null;
+  }else {
+    alert("invalid input. Please type rock, paper, or scissors.");
   }
+}
   //console.log(`User chose: "${userChoice}"`);
 };
 
@@ -22,29 +28,73 @@ const getPlayerChoice = () => {
 
 //Math.random() * myArray.length generates a random number between 0 and the array's length. Math.floor() rounds it down to an integer -> used as an index to access a random element.
 
-const computerPlay = () => Math.floor(Math.random() * valueOptions.length);
-const randomOption = valueOptions[computerPlay()];
-console.log("Computer chose:", randomOption);
+const computerPlay = () => valueOptions[Math.floor(Math.random() * valueOptions.length)];
+
 
 //Write a function that plays a single round of Rock Paper Scissors.The function should take two parameters - the playerSelection and computer.Selection - and then return a string that declares the winner of the round like so: "You Lose! Paper beats Rock". ---Make your function’s playerSelection parameter case￾insensitive
 const playRound = (playerSelection, computerSelection) => {
   if (playerSelection === computerSelection) {
-    return "It´s a tie. (👔not an actual tie😉 hihi)";
+    alert(`We both picked ${playerSelection}. It´s a tie. (👔not an actual tie😉 hihi)` );
+    return "tie";
   } else if (
     (playerSelection === "Rock" && computerSelection === "Scissors") ||
     (playerSelection === "Scissors" && computerSelection === "Rock") ||
     (playerSelection === "Paper" && computer === "Rock")
   ) {
-    return `You win! ${playerSelection}  beats ${computerSelection}.`;
-  } else {
-    return `You lose! ${computerSelection} beats ${playerSelection}.`;
+    alert (`You win! ${playerSelection}  beats ${computerSelection}.`);
+    return "playerWins";
+  } else 
+   {
+    alert(`You lose! ${computerSelection} beats ${playerSelection}.`) ;
+    return "computerWins";
   }
 };
-console.log(playRound("rock", "scissors"));
-console.log(playRound("rock", "paper"));
+//console.log(playRound("rock", "scissors"));
+//console.log(playRound("rock", "paper"));
 
 //function called game(). Call the playRound function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end. use loop, max 5 rounds
 
 // use prompt to get input from the user
 
 //pay attention to user experience, fun text, backstory. Clear instruction
+
+const game = () => {
+  let computerWinsCount = 0;
+  let playerWinsCount = 0;
+  let roundResult;
+  for (let attempt = 0; attempt < 5; attempt++) {
+    const computerSelection = computerPlay();
+    const playerSelection = getPlayerChoice();
+    
+      roundResult = playRound (playerSelection, computerSelection);
+    
+    
+    console.log(roundResult);
+    if (roundResult === "playerWins"){
+      console.log("I am executed");
+      playerWinsCount = playerWinsCount + 1;
+    } else if (roundResult === "computerWins"){
+      console.log("I am executed");
+      computerWinsCount = computerWinsCount + 1;
+    }else if (roundResult === "tie"){
+      console.log("I am executed");
+      computerWinsCount = computerWinsCount + 0;
+      playerWinsCount = playerWinsCount + 0;
+    }
+    //attempt = attempt + 1;
+    console.log(attempt);
+    console.log( "Scores" + playerWinsCount + computerWinsCount)
+    alert (`You have ${4 - attempt} attempts left!`);
+  }
+  console.log("This end score" + computerWinsCount + playerWinsCount);
+  if (computerWinsCount > playerWinsCount){
+    alert (`Computer won! Computer won ${computerWinsCount} times and you won ${playerWinsCount} times`);
+  }else if (computerWinsCount < playerWinsCount){
+    alert (`You won! You won ${playerWinsCount}times and computer won ${computerWinsCount} times`);
+  }else if (computerWinsCount === playerWinsCount) {
+    alert ("It´s a tie. (👔not an actual tie😉 hihi)");
+  }
+}
+
+
+game ();
