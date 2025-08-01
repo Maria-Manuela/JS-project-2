@@ -1,20 +1,19 @@
 //function called computerPlay that will randomly return either ‘Rock’,‘Paper’ or ‘Scissors’.
+alert( "Hello there, since you are here, let’s play Rock Paper Scissors!\n\nRules are simple:\n- Rock beats Scissors\n- Scissors beats Paper\n- Paper beats Rock\n\nBest of 5 rounds. Ready?");
+
 const valueOptions = ["rock", "paper", "scissors"];
 
-// idea: add a function that will alow the user to input symbols and inform
 
 const getPlayerChoice = () => {
   while (true) {
-  const userInput = prompt("Let´s Play! Rock, paper, or scissors?");
+  const userInput = prompt("Let´s Play! Rock, paper, or Scissors?");
   const userChoice = userInput?.trim().toLowerCase();
-  // add loop
   //console.log(userInput);
   if (valueOptions.includes(userChoice)) {
      return userChoice;
-    //return (resume the game)
    
   }else if (userInput === null) {
-    alert("Thank you! Byeee");
+    alert("😢 Awww... backing out already?\nAlright, I’ll be sharpening my virtual scissors for next time! ✂️🤖");
     return null;
   }else {
     alert("invalid input. Please type rock, paper, or scissors.");
@@ -26,35 +25,27 @@ const getPlayerChoice = () => {
 //const userChoice = getPlayerChoice;
 //console.log("Player chose:", getPlayerChoice());
 
-//Math.random() * myArray.length generates a random number between 0 and the array's length. Math.floor() rounds it down to an integer -> used as an index to access a random element.
-
 const computerPlay = () => valueOptions[Math.floor(Math.random() * valueOptions.length)];
 
 
-//Write a function that plays a single round of Rock Paper Scissors.The function should take two parameters - the playerSelection and computer.Selection - and then return a string that declares the winner of the round like so: "You Lose! Paper beats Rock". ---Make your function’s playerSelection parameter case￾insensitive
 const playRound = (playerSelection, computerSelection) => {
   if (playerSelection === computerSelection) {
     alert(`We both picked ${playerSelection}. It´s a tie. (👔not an actual tie😉 hihi)` );
     return "tie";
   } else if (
-    (playerSelection === "Rock" && computerSelection === "Scissors") ||
-    (playerSelection === "Scissors" && computerSelection === "Rock") ||
-    (playerSelection === "Paper" && computer === "Rock")
+    (playerSelection === "rock" && computerSelection === "scissors") ||
+    (playerSelection === "scissors" && computerSelection === "paper") ||
+    (playerSelection === "paper" && computerSelection === "rock")
   ) {
-    alert (`You win! ${playerSelection}  beats ${computerSelection}.`);
+    alert (`Computer: ${computerSelection} \nYou: ${playerSelection} \n\nYou win! ${playerSelection}  beats ${computerSelection}.`);
     return "playerWins";
   } else 
    {
-    alert(`You lose! ${computerSelection} beats ${playerSelection}.`) ;
+    alert(`Computer: ${computerSelection} \nYou: ${playerSelection} \n\nYou lose! ${computerSelection} beats ${playerSelection}.`) ;
     return "computerWins";
   }
 };
-//console.log(playRound("rock", "scissors"));
-//console.log(playRound("rock", "paper"));
 
-//function called game(). Call the playRound function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end. use loop, max 5 rounds
-
-// use prompt to get input from the user
 
 //pay attention to user experience, fun text, backstory. Clear instruction
 
@@ -80,18 +71,18 @@ const game = () => {
       computerWinsCount = computerWinsCount + 0;
       playerWinsCount = playerWinsCount + 0;
     }
-    alert (`You have ${4 - attempt} attempts left!`);
+
+    alert (`You have ${4 - attempt} attempts left! \n\nScore so far: \nYou: ${playerWinsCount} \nComputer: ${computerWinsCount}`);
   }
   
   if (computerWinsCount > playerWinsCount){
-    alert (`Computer won! Computer won ${computerWinsCount} times and you won ${playerWinsCount} times`);
+    alert (`🤖 Beep boop! I win this round, puny human! I crushed you ${computerWinsCount} to ${playerWinsCount}.Better luck next reboot! 💻💥`);
   }else if (computerWinsCount < playerWinsCount){
-    alert (`You won! You won ${playerWinsCount}times and computer won ${computerWinsCount} times`);
+    alert (`🎉 YOU WIN! You defeated the mighty machine ${playerWinsCount} to ${computerWinsCount}! Go ahead, brag a little… I’ll be sulking in binary. 😤`);
   }else if (computerWinsCount === playerWinsCount && computerWinsCount !== 0 && playerWinsCount !== 0) {
-    alert ("It´s a tie. (👔not an actual tie😉 hihi)");
+    alert (`🤝 It's a tie! We both won ${computerWinsCount} times. No winner, no loser... just two legends in a deadlock.`);
   }
-  
 }
 
-
 game ();
+
