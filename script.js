@@ -76,11 +76,11 @@ const game = () => {
   }
   
   if (computerWinsCount > playerWinsCount){
-    alert (`🤖 Beep boop! I win this round, puny human! I crushed you ${computerWinsCount} to ${playerWinsCount}.Better luck next reboot! 💻💥`);
+    alert (`🤖 Beep boop! I win this round, puny human! \nI crushed you ${computerWinsCount} to ${playerWinsCount}.\nBetter luck next reboot! 💻💥`);
   }else if (computerWinsCount < playerWinsCount){
-    alert (`🎉 YOU WIN! You defeated the mighty machine ${playerWinsCount} to ${computerWinsCount}! Go ahead, brag a little… I’ll be sulking in binary. 😤`);
+    alert (`🎉 YOU WIN! You defeated the mighty machine ${playerWinsCount} to ${computerWinsCount}! \nGo ahead, brag a little… I’ll be sulking in binary. 😤`);
   }else if (computerWinsCount === playerWinsCount && computerWinsCount !== 0 && playerWinsCount !== 0) {
-    alert (`🤝 It's a tie! We both won ${computerWinsCount} times. No winner, no loser... just two legends in a deadlock.`);
+    alert (`🤝 It's a tie! We both won ${computerWinsCount} times. \nNo winner, no loser... just two legends in a deadlock.`);
   }
 }
 
