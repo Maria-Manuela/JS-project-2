@@ -8,7 +8,7 @@ const getPlayerChoice = () => {
   const userInput = prompt("Let´s Play! Rock, paper, or scissors?");
   const userChoice = userInput?.trim().toLowerCase();
   // add loop
-  console.log(userInput);
+  //console.log(userInput);
   if (valueOptions.includes(userChoice)) {
      return userChoice;
     //return (resume the game)
@@ -62,38 +62,35 @@ const game = () => {
   let computerWinsCount = 0;
   let playerWinsCount = 0;
   let roundResult;
+
   for (let attempt = 0; attempt < 5; attempt++) {
     const computerSelection = computerPlay();
     const playerSelection = getPlayerChoice();
-    
+   
+    if (playerSelection === null) {
+      break;
+    }
       roundResult = playRound (playerSelection, computerSelection);
-    
-    
-    console.log(roundResult);
+
     if (roundResult === "playerWins"){
-      console.log("I am executed");
       playerWinsCount = playerWinsCount + 1;
     } else if (roundResult === "computerWins"){
-      console.log("I am executed");
       computerWinsCount = computerWinsCount + 1;
     }else if (roundResult === "tie"){
-      console.log("I am executed");
       computerWinsCount = computerWinsCount + 0;
       playerWinsCount = playerWinsCount + 0;
     }
-    //attempt = attempt + 1;
-    console.log(attempt);
-    console.log( "Scores" + playerWinsCount + computerWinsCount)
     alert (`You have ${4 - attempt} attempts left!`);
   }
-  console.log("This end score" + computerWinsCount + playerWinsCount);
+  
   if (computerWinsCount > playerWinsCount){
     alert (`Computer won! Computer won ${computerWinsCount} times and you won ${playerWinsCount} times`);
   }else if (computerWinsCount < playerWinsCount){
     alert (`You won! You won ${playerWinsCount}times and computer won ${computerWinsCount} times`);
-  }else if (computerWinsCount === playerWinsCount) {
+  }else if (computerWinsCount === playerWinsCount && computerWinsCount !== 0 && playerWinsCount !== 0) {
     alert ("It´s a tie. (👔not an actual tie😉 hihi)");
   }
+  
 }
 
 
