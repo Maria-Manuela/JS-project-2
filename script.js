@@ -86,3 +86,23 @@ const game = () => {
 
 game ();
 
+const resumeGame = () => {
+  while (true) {
+  let userChoice = prompt ("Would you like to play again? Please, answer yes or no.");
+  const cleanUserChoice = userChoice?.trim().toLowerCase();
+  if ( cleanUserChoice === "yes") {
+    game ();
+  }else if (cleanUserChoice === "no") {
+    alert("Thank you! Byeeee 👋");
+    break;
+  } else if (userChoice === null) {
+    alert("Thank you! Byeeee 👋");
+    break;
+  }
+  else {
+    alert("Invalid Input! Please, eneter yes or no");
+  }
+}
+}
+
+resumeGame ();
