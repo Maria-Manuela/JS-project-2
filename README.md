@@ -1,1 +1,1 @@
-Rock, Paper, Scissors: https://loquacious-starburst-1accac.netlify.app/
+Rock, Paper, Scissors: https://maria-manuela.github.io/JS-project-2/
