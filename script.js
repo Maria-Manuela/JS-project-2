@@ -6,7 +6,7 @@ const valueOptions = ["rock", "paper", "scissors"];
 
 const getPlayerChoice = () => {
   while (true) {
-  const userInput = prompt("Let´s Play! Rock, paper, or Scissors?");
+  const userInput = prompt("Let´s Play! Rock, Paper, or Scissors?");
   const userChoice = userInput?.trim().toLowerCase();
   //console.log(userInput);
   if (valueOptions.includes(userChoice)) {
